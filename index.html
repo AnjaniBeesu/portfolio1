@@ -55,6 +55,19 @@ button{cursor:pointer}
 .section-title span{font:11px 'DM Mono',monospace;color:#777}
 .about-grid{display:grid;grid-template-columns:1fr 2fr;gap:40px}
 .about-grid p{font-size:clamp(16px,2vw,22px);line-height:1.65;max-width:750px;margin:0}
+.info-section{border-top:1px solid #d0d0d0}
+.info-panel{padding:clamp(22px,4vw,48px);background:rgba(255,255,255,.56);border:1px solid rgba(0,0,0,.10);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.detail-list{margin:0;padding-left:20px;font-size:clamp(14px,1.35vw,17px);line-height:1.8}
+.detail-list li{padding:3px 0 3px 5px}
+.detail-list strong{font-weight:700}
+.experience-heading{margin-top:42px;padding-top:25px;border-top:1px solid rgba(0,0,0,.18);margin-bottom:20px}
+.experience-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.experience-item{padding:20px 0;border-top:1px solid rgba(0,0,0,.22)}
+.experience-meta{display:flex;flex-direction:column;gap:8px;margin-bottom:15px}
+.experience-meta strong{font-size:clamp(20px,2.4vw,29px);letter-spacing:-.04em;font-weight:500}
+.experience-meta span{font:10px 'DM Mono',monospace;color:#666;letter-spacing:.04em}
+.contact-copy{font-size:clamp(17px,2.3vw,25px);line-height:1.6;max-width:760px;margin:0 0 35px}
+.info-panel .contact-block{font-size:clamp(35px,7vw,82px)}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .tag{border:1px solid #aaa;padding:8px 12px;font:11px 'DM Mono',monospace}
 .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -86,6 +99,11 @@ button{cursor:pointer}
 .creative .section-title h2{font-family:'Space Grotesk',sans-serif}
 .creative .section-title span{color:#a4f35b}
 .creative .about-grid p{color:#d0cec8}
+.creative .info-panel{background:rgba(0,0,0,.56);border-color:rgba(255,255,255,.13)}
+.creative .experience-heading{border-color:rgba(255,255,255,.2)}
+.creative .experience-item{border-color:rgba(255,255,255,.2)}
+.creative .experience-meta span{color:#a4f35b}
+.creative .contact-copy{color:#d0cec8}
 .creative .tag{border-color:#53534d;color:#a4f35b}
 .creative .project{border-color:#444;background:#1d1d1d;position:relative;overflow:hidden}
 .creative .project:hover{background:#a4f35b;color:#111}
@@ -96,7 +114,7 @@ button{cursor:pointer}
 .creative .contact-block a{color:#a4f35b}
 .creative footer{border-color:#383838}
 .hidden{display:none!important}
-@media(max-width:650px){.choice-grid,.project-grid,.about-grid{grid-template-columns:1fr}.choice{min-height:145px}.normal-intro{align-items:start;flex-direction:column}.normal-intro .scroll-note{display:none}.navlinks{gap:12px}.creative-hero{min-height:70vh}.orbit{right:7%;top:18%;width:90px;opacity:.65}.section{padding-top:48px;padding-bottom:48px}.chooser-foot{gap:12px}.contact-block{font-size:40px}}
+@media(max-width:650px){.choice-grid,.project-grid,.about-grid,.experience-grid{grid-template-columns:1fr}.choice{min-height:145px}.normal-intro{align-items:start;flex-direction:column}.normal-intro .scroll-note{display:none}.navlinks{gap:12px}.creative-hero{min-height:70vh}.orbit{right:7%;top:18%;width:90px;opacity:.65}.section{padding-top:48px;padding-bottom:48px}.chooser-foot{gap:12px}.contact-block{font-size:40px}}
 </style>
 </head>
 <body>
@@ -111,7 +129,7 @@ button{cursor:pointer}
     <div class="eyebrow">TWO WAYS IN. SAME PERSON.</div>
     <h1>Pick your<br><span>experience.</span></h1>
     <div class="choice-grid">
-      <button class="choice" onclick="window.location.href='https://portfolio-theta-olive-54.vercel.app/'"><small>01 / THE STRAIGHTFORWARD ONE</small><strong>Let's get over with it.</strong><span class="arrow">↗</span></button>
+      <button class="choice" onclick="openView('normal')"><small>01 / THE STRAIGHTFORWARD ONE</small><strong>Let's get over with it.</strong><span class="arrow">↗</span></button>
       <button class="choice" onclick="openView('creative')"><small>02 / THE CREATIVE VERSION</small><strong>Take the scenic route.</strong><span class="arrow">↗</span></button>
     </div>
   </div>
@@ -121,10 +139,10 @@ button{cursor:pointer}
 <div id="normal" class="view normal">
   <nav><button class="navback" onclick="backHome()">← BACK</button><span>ANJANI BEESU</span><div class="navlinks"><a href="#n-about">ABOUT</a><a href="#n-work">WORK</a><a href="#n-skills">SKILLS</a><a href="#n-contact">CONTACT</a></div></nav>
   <header class="normal-hero"><div class="eyebrow">PORTFOLIO / 2026</div><h1><span>ANJANI</span><span>BEESU.</span></h1><div class="normal-intro"><p>Computer science student, builder, curious mind. I like turning ambitious ideas into things that actually work.</p><span class="scroll-note">↓ SCROLL TO EXPLORE</span></div></header>
-  <section class="section" id="n-about"><div class="section-title"><h2>About</h2><span>01 — A LITTLE CONTEXT</span></div><div class="about-grid"><div class="eyebrow">WHO I AM</div><div><p>I'm a computer science student exploring the intersection of software, AI, and creative technology. Currently learning by building, contributing, and asking better questions.</p><div class="tags"><span class="tag">AI / ML</span><span class="tag">COMPUTER VISION</span><span class="tag">SOFTWARE</span><span class="tag">OPEN SOURCE</span></div></div></div></section>
+  <section class="section info-section" id="n-about"><div class="info-panel"><div class="section-title"><h2>About me</h2><span>01 / ABOUT ME</span></div><div class="about-grid"><div class="eyebrow">WHO I AM</div><div><ul class="detail-list"><li>Currently pursuing a <strong>B.Tech in Computer Science &amp; Engineering</strong>.</li><li>Exploring how technology can be turned into products and experiences that people genuinely enjoy using.</li><li>I build projects with a focus on <strong>purpose, usability, and attention to detail</strong>.</li><li>Interested in creating things that are not just functional, but also <strong>intuitive, engaging, and worth coming back to</strong>.</li><li>I enjoy taking an idea from <strong>concept → design → development → execution</strong>.</li><li>Constantly learning, experimenting, and looking for better ways to build.</li></ul></div></div><div class="experience-heading"><span class="eyebrow">LEADERSHIP &amp; EXPERIENCE</span></div><div class="experience-grid"><article class="experience-item"><div class="experience-meta"><strong>Class Representative</strong><span>AUGUST 2025 — PRESENT</span></div><ul class="detail-list"><li>Representing a class of <strong>60 students</strong>.</li><li>Acting as the communication link between <strong>students and faculty</strong>.</li><li>Coordinating academic updates, submissions, schedules, and important announcements.</li><li>Communicating student concerns and requirements to faculty when needed.</li><li>Helping organize and coordinate class activities and academic responsibilities.</li></ul></article><article class="experience-item"><div class="experience-meta"><strong>Event Organizer</strong><span>4 DEPARTMENTAL EVENTS + 1 COLLEGE-LEVEL EVENT</span></div><ul class="detail-list"><li>Helped organize and coordinate <strong>4 departmental events</strong> and <strong>1 college-level event</strong>.</li><li>Worked with students, faculty, and volunteers to plan and execute events.</li><li>Coordinated responsibilities, communication, registrations, and event logistics.</li><li>Managed last-minute changes and ensured activities stayed on track.</li><li>Gained hands-on experience in <strong>team coordination, planning, communication, and execution</strong>.</li></ul></article></div></div></section>
   <section class="section" id="n-work"><div class="section-title"><h2>Selected work</h2><span>02 — THINGS I'VE BUILT</span></div><div class="project-grid"><article class="project"><div class="meta"><span>PROJECT 01</span><span>AI / COMPUTER VISION</span></div><div><h3>Project title goes here.</h3><p>Replace this with a short description of what you built, why it matters, and what you used.</p></div></article><article class="project"><div class="meta"><span>PROJECT 02</span><span>SOFTWARE / WEB</span></div><div><h3>Another project.</h3><p>Give people the useful details. Keep it short, specific, and focused on impact.</p></div></article><article class="project"><div class="meta"><span>PROJECT 03</span><span>RESEARCH / EXPERIMENT</span></div><div><h3>Something curious.</h3><p>A project, experiment, contribution, or rabbit hole that deserves to be documented.</p></div></article><article class="project"><div class="meta"><span>PROJECT 04</span><span>OPEN SOURCE</span></div><div><h3>Community contributions.</h3><p>Highlight repositories, merged pull requests, or the communities you have contributed to.</p></div></article></div></section>
   <section class="section" id="n-skills"><div class="section-title"><h2>Toolkit</h2><span>03 — WHAT I WORK WITH</span></div><div class="skills-list"><div class="skill-row"><span>Languages</span><small>ADD YOUR LANGUAGES</small></div><div class="skill-row"><span>Frameworks & tools</span><small>ADD YOUR TOOLS</small></div><div class="skill-row"><span>Areas of interest</span><small>AI · CV · SYSTEMS · ADD MORE</small></div></div></section>
-  <section class="section" id="n-contact"><div class="section-title"><h2>Contact</h2><span>04 — SAY HELLO</span></div><div class="contact-block">Have an idea?<br><a href="mailto:your-email@example.com">Let's talk ↗</a></div></section>
+  <section class="section info-section" id="n-contact"><div class="info-panel"><div class="section-title"><h2>Connect with me</h2><span>05 / CONTACT ME</span></div><p class="contact-copy">Whether it's an internship, job, collaboration, project, or simply an interesting conversation, I'd love to hear from you.</p><div class="contact-block"><a href="mailto:your-email@example.com">Let's talk ↗</a></div></div></section>
   <footer><span>ANJANI BEESU © 2026</span><span>MADE WITH INTENTION.</span></footer>
 </div>
 
